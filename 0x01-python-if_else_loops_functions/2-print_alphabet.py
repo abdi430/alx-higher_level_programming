@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
-"""Print the alphabet in lowercase, not followed by a new line."""
-for letter in range(97, 123):
-    print("{}".format(chr(letter)), end="")
+
+for alpha_letters in range(ord('a'), ord('z')+1):
+    if alpha_letters == 'e' or alpha_letters == 'q':
+       continue
+    print("{:c}".format(alpha_letters), end="")
