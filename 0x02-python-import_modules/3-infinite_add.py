@@ -1,10 +1,16 @@
 #!/usr/bin/python3
-from sys import argv
+import sys
 
+if __name__ != "__main__":
+    exit()
 
-if __name__ == "__main__":
-    newsum = 0
-    if len(argv) > 1:
-        for i in range(1, len(argv)):
-            newsum += int(argv[i])
-    print(newsum)
+argc = len(sys.argv) - 1
+
+i = 0
+result = 0
+for arg in sys.argv:
+    if i != 0:
+        result += int(arg)
+    else:
+        i += 1
+print("{:d}".format(result))
