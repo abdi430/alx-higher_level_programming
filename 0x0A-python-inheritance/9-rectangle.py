@@ -8,21 +8,20 @@ module with class BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """Rectangle class that inherits from BaseGeometry"""
-
+    '''Class Rectangle inherit from BaseGeometry'''
     def __init__(self, width, height):
-        """Method for initialized the attrubutes"""
-        self.integer_validator("width", width)
-        self.__width = width
-        self.integer_validator("height", height)
-        self.__height = height
+        '''init method
+        arg width (int): width of the rectangle
+        arg height (int): height of the rectangle'''
+        self.__width = super().integer_validator("width", width)
+        self.__height = super().integer_validator("height", height)
 
     def area(self):
-        """Method to redefine a area method in the parent class"""
-
+        '''Calculate area of the rectangle
+        arg width (int): width of the rectangle
+        arg height (int): height of the rectangle
+        return area'''
         return self.__width * self.__height
 
     def __str__(self):
-        """__str__ method for return the next string"""
-
-        return "[Rectangle] {}/{}".format(self.__width, self.__height)
+        return "[Rectangle] " + str(self.__width) + "/" + str(self.__height)
