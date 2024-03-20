@@ -1,8 +1,16 @@
 #!/usr/bin/python3
+"""
+===========================
+Module with class MyList
+===========================
+"""
+
+
 class MyList(list):
-    '''Class Mylist inherit from list class'''
+    """Class with method print_sorted"""
+    pass
+
     def print_sorted(self):
-        '''print_sorted use the sort method of the super class'''
-        new_list = self[:]
-        new_list.sort()
-        print(new_list)
+        """Methot that sorted a list"""
+
+        print(sorted(list(self)))
