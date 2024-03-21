@@ -5,10 +5,9 @@ Python file similar to model_state.py named model_city.py that contains the
 class definition of a City
 ============================================================================
 """
-
 import sys
-from model_state import Base, State
-from model_city import City
+from relationship_state import Base, State
+from relationship_city import City
 
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
@@ -24,8 +23,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    citiesByState = session.query(City, State).join(
-        State).order_by(asc(City.id)).all()
-    for city, state in citiesByState:
-        print("{}: ({}) {}".format(state.name, city.id, city.name))
+    states = session.query(State).all()
+    for state in states:
+        print("{}: {}".format(state.id, state.name))
+        for city in state.cities:
+            print("\t{}: {}".format(city.id, city.name))
     session.close()

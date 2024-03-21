@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 """
 ============================================================================
-Python file similar to model_state.py named model_city.py that contains the
-class definition of a City
+102-relationship_cities_states_list.py
 ============================================================================
 """
-
 import sys
-from model_state import Base, State
-from model_city import City
+from relationship_state import Base, State
+from relationship_city import City
 
 from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
@@ -24,8 +22,7 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    citiesByState = session.query(City, State).join(
-        State).order_by(asc(City.id)).all()
-    for city, state in citiesByState:
-        print("{}: ({}) {}".format(state.name, city.id, city.name))
+    citis = session.query(City).order_by(City.id).all()
+    for city in citis:
+        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
     session.close()
