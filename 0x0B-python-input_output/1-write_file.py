@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+    """ write file"""
+
+
 def write_file(filename="", text=""):
     lines = 0
     with open(filename, 'w') as f:
