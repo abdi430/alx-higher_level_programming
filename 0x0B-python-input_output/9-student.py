@@ -1,18 +1,19 @@
 #!/usr/bin/python3
-from sys import argv
-save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
+"""student module
+"""
 
 
-list1 = []
+class Student:
+    """Student class
+    """
+    def __init__(self, first_name, last_name, age):
+        """Instantiation
+        """
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-try:
-    list1 = list(load_from_json_file("add_item.json"))
-
-except:
-    len(list1) == 0
-
-for arg in range(1, len(argv)):
-    list1.append(argv[arg])
-
-save_to_json_file(list1, "add_item.json")
+    def to_json(self):
+        """Retrieves dictionary representation of Student instance
+        """
+        return self.__dict__

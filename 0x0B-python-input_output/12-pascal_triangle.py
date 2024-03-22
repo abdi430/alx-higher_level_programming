@@ -1,30 +1,25 @@
 #!/usr/bin/python3
-"""
-===============================
-module with the class Student
-===============================
+"""pascal_triangle module
 """
 
 
-class Student:
-    """class with methods to_json for retrieves dictionary"""
+def factorial(n):
+    """Returns factorialorial
+    """
+    factorial = 1
+    for i in range(1, n + 1):
+        factorial = factorial * i
+    return factorial
 
-    def __init__(self, first_name, last_name, age):
-        """method for initialized all atributes"""
 
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
-
-    def to_json(self, attrs=None):
-        """method for retrieve a dictionary representation for a
-        student instance"""
-
-        if attrs is None:
-            return self.__dict__
-        dic = {}
-        for key, value in self.__dict__.items():
-            for i in attrs:
-                if key == i:
-                    dic[key] = value
-        return dic
+def pascal_triangle(n):
+    """Returns a list of lists of integers reptriangleenting the Pascal's triangle
+    of n
+    """
+    triangle = []
+    for i in range(n):
+        row = []
+        for j in range(i + 1):
+            row.append(factorial(i) // (factorial(j) * factorial(i - j)))
+        triangle.append(row)
+    return triangle

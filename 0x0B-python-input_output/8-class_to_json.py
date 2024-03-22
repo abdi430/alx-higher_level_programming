@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+"""class_to_json
+"""
 
-import json
 
-
-def load_from_json_file(filename):
-    """function that creates an Object from JSON file"""
-
-    with open(filename) as f:
-        return json.loads(f.read())
+def class_to_json(obj):
+    """Returns dictionary with simple data structure
+    (list, dictionary, string, integer, and boolean)
+    for JSON serialisation of an object
+    """
+    return obj.__dict__
