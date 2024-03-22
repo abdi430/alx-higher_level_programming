@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-    """ write file"""
-
-
 def write_file(filename="", text=""):
-    lines = 0
+    """function that writes a string to a text file and return the number
+    of characters written"""
+
     with open(filename, 'w') as f:
-        lines = f.write(text)
-    return lines
+        return f.write(text)
