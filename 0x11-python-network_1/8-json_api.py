@@ -1,31 +1,20 @@
 #!/usr/bin/python3
+"""
+takes in a URL, sends a request to the URL and displays the
+body of the response using requests
+"""
 import requests
 from sys import argv
-# http://21701fe1a6fd.19.hbtn-cod.io:5000/search_user
 
 
 if __name__ == "__main__":
-    if len(argv) == 2:
-        url = "http://0.0.0.0:5000/search_user"
-        payload = {}
-
-        if argv[1]:
-            payload['q'] = argv[1]
-        else:
-            payload['q'] = ""
-
-        res = requests.post(url, data=payload)
-        res.raise_for_status()
-
-        try:
-            obj = res.json()
-            try:
-                _id = "[{}] ".format(obj['id'])
-                name = "{}".format(obj['name'])
-                print(_id + name)
-            except:
-                print('No result')
-        except:
-            print('Not a valid JSON')
+    """
+    takes in a URL, sends a request to the URL and displays the
+    body of the response using requests
+    """
+    url = argv[1]
+    r = requests.get(url)
+    if r.status_code >= 400:
+        print("Error code: {}".format(r.status_code))
     else:
-        print('No result')
+        print(r.text)
