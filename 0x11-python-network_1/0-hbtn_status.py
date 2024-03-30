@@ -1,12 +1,15 @@
 #!/usr/bin/python3
+"""fetches https://intranet.hbtn.io/status"""
 import urllib.request
 
-if __name__ == "__main__":
-    with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
-        content = response.read()
 
-    deco = ["utf8 content", content.decode()]
-    headers = [["type", type(content)], ["content", content], deco]
+if __name__ == "__main__":
+    """fetches https://intranet.hbtn.io/status"""
+    with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
+        html = response.read()
+        html_str = html.decode('utf-8')
+
     print("Body response:")
-    for el in headers:
-        print("\t- {}: {}".format(el[0], el[1]))
+    print("\t- type: {}".format(type(html)))
+    print("\t- content: {}".format(html))
+    print("\t- utf8 content: {}".format(html_str))
